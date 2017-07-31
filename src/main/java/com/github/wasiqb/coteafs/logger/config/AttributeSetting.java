@@ -23,7 +23,7 @@ import java.util.Map;
  * @since 26-Jun-2017 8:22:32 PM
  */
 public class AttributeSetting {
-	protected Map <String, ?> attributes;
+	protected Map <String, Object> attributes;
 
 	/**
 	 * @author wasiq.bhamla
@@ -38,7 +38,7 @@ public class AttributeSetting {
 	 * @since 26-Jun-2017 8:22:57 PM
 	 * @return the attributes
 	 */
-	public Map <String, ?> getAttributes () {
+	public Map <String, Object> getAttributes () {
 		return this.attributes;
 	}
 
@@ -48,7 +48,7 @@ public class AttributeSetting {
 	 * @param attributes
 	 *            the attributes to set
 	 */
-	public void setAttributes (final Map <String, ?> attributes) {
+	public void setAttributes (final Map <String, Object> attributes) {
 		this.attributes = attributes;
 	}
 }

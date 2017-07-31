@@ -55,10 +55,10 @@ public enum Status {
 	 */
 	WARN (Level.WARN);
 
-	private final Level status;
+	private final Level level;
 
-	private Status (final Level status) {
-		this.status = status;
+	private Status (final Level level) {
+		this.level = level;
 	}
 
 	/**
@@ -67,6 +67,6 @@ public enum Status {
 	 * @return the status
 	 */
 	public Level getStatus () {
-		return this.status;
+		return this.level;
 	}
 }

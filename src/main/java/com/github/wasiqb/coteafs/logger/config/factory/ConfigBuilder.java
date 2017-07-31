@@ -17,6 +17,7 @@ package com.github.wasiqb.coteafs.logger.config.factory;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.core.appender.ConsoleAppender;
@@ -56,8 +57,9 @@ public class ConfigBuilder {
 
 	private static <T, K extends ComponentBuilder <K>> void addAttributes (final ComponentBuilder <K> appender,
 			final Map <String, T> attributes) {
-		for (final String key : attributes.keySet ()) {
-			final T val = attributes.get (key);
+		for (final Entry <String, T> entry : attributes.entrySet ()) {
+			final String key = entry.getKey ();
+			final T val = entry.getValue ();
 			boolean isEnum = false;
 			for (final Target target : ConsoleAppender.Target.values ())
 				if (target	.name ()
@@ -65,8 +67,14 @@ public class ConfigBuilder {
 					appender.addAttribute (key, Target.valueOf (val.toString ()));
 					isEnum = true;
 				}
-			if (!isEnum) if (val instanceof Status) appender.addAttribute (key, ((Status) val).getStatus ());
-			else appender.addAttribute (key, val);
+			if (!isEnum) {
+				if (val instanceof Status) {
+					appender.addAttribute (key, ((Status) val).getStatus ());
+				}
+				else {
+					appender.addAttribute (key, val);
+				}
+			}
 		}
 	}
 
@@ -89,7 +97,10 @@ public class ConfigBuilder {
 	 * @since 26-Jun-2017 8:50:32 PM
 	 */
 	public ConfigBuilder () {
-		final Log4jSetting config = ConfigLoader.settings (Log4jSetting.class);
+		final Log4jSetting config = ConfigLoader.settings ()
+												.withKey ("coteafs.logger.config")
+												.withDefault ("coteafs-logger.yaml")
+												.load (Log4jSetting.class);
 		this.properties = config.getProperties ();
 		this.appenders = config.getAppenders ();
 		this.loggers = config.getLoggers ();
@@ -133,17 +144,19 @@ public class ConfigBuilder {
 		for (final ComponentSetting c : setting.getComponents ()) {
 			final ComponentBuilder <?> newComp = build.newComponent (c.getPlugin ());
 			addAttributes (newComp, c.getAttributes ());
-			if (c	.getComponents ()
-					.size () > 0)
+			if (!c	.getComponents ()
+					.isEmpty ()) {
 				addComponent (newComp, c, build);
+			}
 			comp.addComponent (newComp);
 		}
 		component.addComponent (comp);
 	}
 
 	private void addProperties (final ConfigurationBuilder <BuiltConfiguration> build) {
-		for (final PropertySetting property : this.properties)
+		for (final PropertySetting property : this.properties) {
 			build.addProperty (property.getName (), property.getValue ());
+		}
 	}
 
 	private void addRootLogger (final ConfigurationBuilder <BuiltConfiguration> build) {
