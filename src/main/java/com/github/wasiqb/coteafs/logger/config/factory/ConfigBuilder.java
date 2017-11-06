@@ -99,7 +99,7 @@ public class ConfigBuilder {
 	public ConfigBuilder () {
 		final Log4jSetting config = ConfigLoader.settings ()
 												.withKey ("coteafs.logger.config")
-												.withDefault ("coteafs-logger.yaml")
+												.withDefault ("/coteafs-logger.yaml")
 												.load (Log4jSetting.class);
 		this.properties = config.getProperties ();
 		this.appenders = config.getAppenders ();

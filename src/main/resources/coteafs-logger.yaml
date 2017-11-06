@@ -1,0 +1,23 @@
+status: WARN
+monitor_interval: 30
+
+properties:
+  - name: log-pattern
+    value: "[%d{HH:mm:ss.SSS}] [%-5level] - %msg (%logger{1}:%L) %throwable{short.message}%n"
+
+appenders:
+  - name: console-log
+    plugin: Console
+    layout:
+      plugin: PatternLayout
+      attributes:
+        pattern: ${log-pattern}
+    attributes:
+      target: SYSTEM_OUT
+
+loggers:
+  level: ALL  
+  appender_ref:
+  - ref: "console-log"
+    attributes:
+      level: DEBUG
