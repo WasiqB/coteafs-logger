@@ -9,7 +9,7 @@
 	<parent>
 		<groupId>com.github.wasiqb.coteafs</groupId>
 		<artifactId>parent</artifactId>
-		<version>1.3.0</version>
+		<version>1.4.0</version>
 	</parent>
 
 	<scm>
@@ -29,8 +29,8 @@
 	</ciManagement>
 	
 	<properties>
-		<log4j.version>2.9.1</log4j.version>
-		<coteafs.config.version>1.3.0</coteafs.config.version>
+		<log4j.version>2.10.0</log4j.version>
+		<coteafs.config.version>1.4.0</coteafs.config.version>
 	</properties>
 
 	<dependencies>
