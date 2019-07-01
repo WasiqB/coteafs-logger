@@ -34,30 +34,33 @@ public class ConfigFactory extends ConfigurationFactory {
 	/*
 	 * (non-Javadoc)
 	 * @see
-	 * org.apache.logging.log4j.core.config.ConfigurationFactory#getConfiguration(org.apache.logging
-	 * .log4j.core.LoggerContext, org.apache.logging.log4j.core.config.ConfigurationSource)
+	 * org.apache.logging.log4j.core.config.ConfigurationFactory#getConfiguration(
+	 * org.apache.logging.log4j.core.LoggerContext,
+	 * org.apache.logging.log4j.core.config.ConfigurationSource)
 	 */
 	@Override
-	public Configuration getConfiguration (final LoggerContext loggerContext, final ConfigurationSource source) {
+	public Configuration getConfiguration (final LoggerContext loggerContext,
+		final ConfigurationSource source) {
 		return getConfiguration (loggerContext, source.toString (), null);
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * @see
-	 * org.apache.logging.log4j.core.config.ConfigurationFactory#getConfiguration(org.apache.logging
-	 * .log4j.core.LoggerContext, java.lang.String, java.net.URI)
+	 * org.apache.logging.log4j.core.config.ConfigurationFactory#getConfiguration(
+	 * org.apache.logging.log4j.core.LoggerContext, java.lang.String, java.net.URI)
 	 */
 	@Override
 	public Configuration getConfiguration (final LoggerContext loggerContext, final String name,
-			final URI configLocation) {
+		final URI configLocation) {
 		final ConfigBuilder builder = new ConfigBuilder ();
 		return builder.build (name, newConfigurationBuilder ());
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.apache.logging.log4j.core.config.ConfigurationFactory#getSupportedTypes()
+	 * @see
+	 * org.apache.logging.log4j.core.config.ConfigurationFactory#getSupportedTypes()
 	 */
 	@Override
 	protected String [] getSupportedTypes () {

@@ -47,7 +47,8 @@ import com.github.wasiqb.coteafs.logger.config.Status;
  */
 public class ConfigBuilder {
 	private static void addAppenderRef (final AppenderComponentBuilder appenderCom,
-			final List <AppenderRefSetting> appenderRef, final ConfigurationBuilder <BuiltConfiguration> build) {
+		final List <AppenderRefSetting> appenderRef,
+		final ConfigurationBuilder <BuiltConfiguration> build) {
 		for (final AppenderRefSetting setting : appenderRef) {
 			final AppenderRefComponentBuilder ref = build.newAppenderRef (setting.getRef ());
 			addAttributes (ref, setting.getAttributes ());
@@ -55,15 +56,15 @@ public class ConfigBuilder {
 		}
 	}
 
-	private static <T, K extends ComponentBuilder <K>> void addAttributes (final ComponentBuilder <K> appender,
-			final Map <String, T> attributes) {
+	private static <T, K extends ComponentBuilder <K>> void addAttributes (
+		final ComponentBuilder <K> appender, final Map <String, T> attributes) {
 		for (final Entry <String, T> entry : attributes.entrySet ()) {
 			final String key = entry.getKey ();
 			final T val = entry.getValue ();
 			boolean isEnum = false;
 			for (final Target target : ConsoleAppender.Target.values ())
-				if (target	.name ()
-							.equalsIgnoreCase (val.toString ())) {
+				if (target.name ()
+					.equalsIgnoreCase (val.toString ())) {
 					appender.addAttribute (key, Target.valueOf (val.toString ()));
 					isEnum = true;
 				}
@@ -78,8 +79,8 @@ public class ConfigBuilder {
 		}
 	}
 
-	private static void addLayout (final AppenderComponentBuilder appenderCom, final LayoutSetting layout,
-			final ConfigurationBuilder <BuiltConfiguration> build) {
+	private static void addLayout (final AppenderComponentBuilder appenderCom,
+		final LayoutSetting layout, final ConfigurationBuilder <BuiltConfiguration> build) {
 		if (layout == null) return;
 		final LayoutComponentBuilder layoutCom = build.newLayout (layout.getPlugin ());
 		addAttributes (layoutCom, layout.getAttributes ());
@@ -98,14 +99,14 @@ public class ConfigBuilder {
 	 */
 	public ConfigBuilder () {
 		final Log4jSetting config = ConfigLoader.settings ()
-												.withKey ("coteafs.logger.config")
-												.withDefault ("/coteafs-logger.yaml")
-												.load (Log4jSetting.class);
+			.withKey ("coteafs.logger.config")
+			.withDefault ("/coteafs-logger.yaml")
+			.load (Log4jSetting.class);
 		this.properties = config.getProperties ();
 		this.appenders = config.getAppenders ();
 		this.loggers = config.getLoggers ();
-		this.level = config	.getStatus ()
-							.getStatus ();
+		this.level = config.getStatus ()
+			.getStatus ();
 		this.interval = config.getMonitorInterval ();
 	}
 
@@ -116,7 +117,8 @@ public class ConfigBuilder {
 	 * @return config
 	 * @since 26-Jun-2017 8:55:37 PM
 	 */
-	public Configuration build (final String name, final ConfigurationBuilder <BuiltConfiguration> build) {
+	public Configuration build (final String name,
+		final ConfigurationBuilder <BuiltConfiguration> build) {
 		build.setConfigurationName (name);
 		build.setStatusLevel (this.level);
 		build.setMonitorInterval (this.interval);
@@ -128,7 +130,8 @@ public class ConfigBuilder {
 
 	private void addAppenders (final ConfigurationBuilder <BuiltConfiguration> build) {
 		for (final AppenderSetting appender : this.appenders) {
-			final AppenderComponentBuilder appenderCom = build.newAppender (appender.getName (), appender.getPlugin ());
+			final AppenderComponentBuilder appenderCom = build.newAppender (appender.getName (),
+				appender.getPlugin ());
 			addAttributes (appenderCom, appender.getAttributes ());
 			addLayout (appenderCom, appender.getLayout (), build);
 			addAppenderRef (appenderCom, appender.getAppenderRef (), build);
@@ -137,15 +140,16 @@ public class ConfigBuilder {
 		}
 	}
 
-	private <K extends ComponentBuilder <K>> void addComponent (final ComponentBuilder <K> component,
-			final ComponentSetting setting, final ConfigurationBuilder <BuiltConfiguration> build) {
+	private <K extends ComponentBuilder <K>> void addComponent (
+		final ComponentBuilder <K> component, final ComponentSetting setting,
+		final ConfigurationBuilder <BuiltConfiguration> build) {
 		if (setting == null) return;
 		final ComponentBuilder <?> comp = build.newComponent (setting.getPlugin ());
 		for (final ComponentSetting c : setting.getComponents ()) {
 			final ComponentBuilder <?> newComp = build.newComponent (c.getPlugin ());
 			addAttributes (newComp, c.getAttributes ());
-			if (!c	.getComponents ()
-					.isEmpty ()) {
+			if (!c.getComponents ()
+				.isEmpty ()) {
 				addComponent (newComp, c, build);
 			}
 			comp.addComponent (newComp);
@@ -160,8 +164,8 @@ public class ConfigBuilder {
 	}
 
 	private void addRootLogger (final ConfigurationBuilder <BuiltConfiguration> build) {
-		final RootLoggerComponentBuilder root = build.newRootLogger (this.loggers	.getLevel ()
-																					.getStatus ());
+		final RootLoggerComponentBuilder root = build.newRootLogger (this.loggers.getLevel ()
+			.getStatus ());
 		for (final AppenderRefSetting setting : this.loggers.getAppenderRef ()) {
 			final AppenderRefComponentBuilder ref = build.newAppenderRef (setting.getRef ());
 			addAttributes (ref, setting.getAttributes ());
