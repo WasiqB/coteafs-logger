@@ -20,4 +20,4 @@ loggers:
   appender_ref:
   - ref: "console-log"
     attributes:
-      level: DEBUG
+      level: INFO

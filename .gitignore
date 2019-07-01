@@ -1,10 +1,13 @@
 /target/
-/logs/
 /test-output/
 /settings/
+/reports/
+/logs/
 /*.gpg
 /*.gpg.lock
-/reports/
 /.settings/
 /.classpath
 /.project
+/.idea/
+*.iml
+.DS_Store
