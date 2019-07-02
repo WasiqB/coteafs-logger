@@ -1,20 +1,27 @@
 # coteafs-logger
 
-## What's this is all about?
+## :boom: What's this all about?
 
 coteafs-logger is a wrapper library on top of **log4j2**. This library was created to simplify the logging as there is no need to add two dependency of log4j2. Also the logger config is simplified by introducing Yaml style of configs.
 
-## What this library offers?
+## :golf: What this library offers?
 
 By default if you don't provide the logger config, it will output the logs on the console. But if the logger file is provided, it will have precedence over default behavior.
 
-## Logger config file
+## :soccer: Logger config file
 
-The config file should be placed in `src/main/resources`. Following is the sample logger config which will add 3 log files and will archive the logs on,
+The config file should be placed in `src/main/resources.` 
+Following is the sample logger config which will create 3 different log files, as follows:
 
-- Every run
-- Log file size exceeds 5 MB
-- Every next day
+1. log-error.log -- It will contain error and fatal logs only.
+2. log-main.log  -- It will contain info as well as error and fatal logs.
+3. log-all.log   -- It will contain all the logs, i.e. Info, error, warn, debug, trace and fatal.
+
+The above generated files will be archived on the following basis:
+
+- On Every Automation Run
+- When log file size exceeds 5 mb.
+- Every next day.
 
 **`coteafs-logger.yml`**
 
@@ -128,9 +135,9 @@ loggers:
       level: ERROR
 ```
 
-## Usage?
+## :pushpin: Usage?
 
-You can drop the dependency into your `pom.xml` to use this library.
+You can use the following dependency into your `pom.xml` to use this library.
 
 ```xml
 <dependency>
@@ -139,3 +146,13 @@ You can drop the dependency into your `pom.xml` to use this library.
   <version>1.8.0</version>
 </dependency>
 ```
+
+## :question: Need Assistance?
+* Directly chat with me on my [site][] and I'll revert to you as soon as possible.
+* Discuss your queries by writing to me @ wasbhamla2005@gmail.com
+* If you find any issue which is bottleneck for you, [search the issue tracker][] to see if it is already raised.
+* If not raised, then you can create a [new issue][] with required details as mentioned in the issue template.
+
+[site]: https://wasiqb.github.io
+[search the issue tracker]: https://github.com/WasiqB/coteafs-logger/issues?q=something
+[new issue]: https://github.com/WasiqB/coteafs-logger/issues/new
