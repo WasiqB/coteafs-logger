@@ -153,6 +153,14 @@ You can use the following dependency into your `pom.xml` to use this library.
 * If you find any issue which is bottleneck for you, [search the issue tracker][] to see if it is already raised.
 * If not raised, then you can create a [new issue][] with required details as mentioned in the issue template.
 
+## :star: What you do if you like the project?
+* Spread the word with your network.
+* **Star** the project to make the project popular.
+* Stay updated with the project progress by **Watching** it.
+* Contribute to fix open issues, documentations or add new features. To know more, see our [contributing][] page.
+* I would be delighted if you can **sponsor** this project and provide your support to open source development.
+
+
 ## :heavy_check_mark: Contributors
 
 <div>
@@ -189,3 +197,4 @@ You can use the following dependency into your `pom.xml` to use this library.
 [site]: https://wasiqb.github.io
 [search the issue tracker]: https://github.com/WasiqB/coteafs-logger/issues?q=something
 [new issue]: https://github.com/WasiqB/coteafs-logger/issues/new
+[contributing]: .github/CONTRIBUTING.md
