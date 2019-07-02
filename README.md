@@ -153,6 +153,39 @@ You can use the following dependency into your `pom.xml` to use this library.
 * If you find any issue which is bottleneck for you, [search the issue tracker][] to see if it is already raised.
 * If not raised, then you can create a [new issue][] with required details as mentioned in the issue template.
 
+## :heavy_check_mark: Contributors
+
+<div>
+  <ul>
+    <li>
+      <a href="https://github.com/WasiqB">
+        <img alt="Wasiq Bhamla: Framework developer and maintainer." src="https://github.com/WasiqB.png" width=100 height=100 />
+      </a>
+    </li>
+    <li>
+      <a href="https://github.com/mfaisalkhatri">
+        <img alt="Mohammad Faisal Khatri: Framework Tester." src="https://github.com/mfaisalkhatri.png" width=100 height=100 />
+      </a>
+    </li>
+  </ul>
+</div>
+
+## :ticket: Versioning ideology
+
+<p align="left">
+  <a href="http://semver.org/">
+    <img src="assets/semver.png" width=300 />
+  </a>
+</p>
+
+## :copyright:Wasiq Bhamla
+
+<p align="left">
+  <a href="http://www.apache.org/licenses/LICENSE-2.0">
+    <img src="http://www.apache.org/img/asf_logo.png" width=300 />
+  </a>
+</p>
+
 [site]: https://wasiqb.github.io
 [search the issue tracker]: https://github.com/WasiqB/coteafs-logger/issues?q=something
 [new issue]: https://github.com/WasiqB/coteafs-logger/issues/new
