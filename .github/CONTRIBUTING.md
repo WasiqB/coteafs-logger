@@ -57,3 +57,4 @@ Sending Pull Request will be the last step of your contribution. To know how to 
 [changelogs]: ../CHANGELOG.md
 [commitHelp]: https://github.com/erlang/otp/wiki/Writing-good-commit-messages
 [pr]: https://help.github.com/articles/creating-a-pull-request
+[site]: https://wasiqb.github.io
