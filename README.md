@@ -158,8 +158,7 @@ You can use the following dependency into your `pom.xml` to use this library.
 * **Star** the project to make the project popular.
 * Stay updated with the project progress by **Watching** it.
 * Contribute to fix open issues, documentations or add new features. To know more, see our [contributing][] page.
-* I would be delighted if you can **sponsor** this project and provide your support to open source development.
-
+* I would be delighted if you can **Sponsor** this project and provide your support to open source development by clicking on the **Sponsor button** on the top of this repository.
 
 ## :heavy_check_mark: Contributors
 
