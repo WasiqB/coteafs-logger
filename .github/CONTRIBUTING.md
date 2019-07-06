@@ -99,7 +99,7 @@ For assuring quality of framework to prospective users, test coverage plays an i
 
 ### SonarCloud Code Quality monitoring
 
-For each commit to any of the branches described above, CI will also execute static code analysis. It is advisable to check the [SonarCloud][sonar] for any coding issues and resolve it, before sending across for **Pull Request**.
+For each commit to any of the branches described above, CI will also execute static code analysis. 
 
 ## Issues and Suggestions.
 
