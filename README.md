@@ -211,7 +211,7 @@ You can use the following dependency into your `pom.xml` to use this library.
 [search the issue tracker]: https://github.com/WasiqB/coteafs-logger/issues?q=something
 [new issue]: https://github.com/WasiqB/coteafs-logger/issues/new
 [contributing]: .github/CONTRIBUTING.md
-[home]: https://github.com/wasiqb/coteafs-selenium
-[circleci]: https://circleci.com/gh/WasiqB/coteafs-selenium
-[coverage]: https://sonarcloud.io/component_measures?id=com.github.wasiqb.coteafs%3Aselenium&metric=Coverage
-[maven]: https://maven-badges.herokuapp.com/maven-central/com.github.wasiqb.coteafs/selenium
+[home]: https://github.com/wasiqb/coteafs-logger
+[circleci]: https://circleci.com/gh/WasiqB/coteafs-logger
+[coverage]: https://sonarcloud.io/component_measures?id=com.github.wasiqb.coteafs%3Alogger&metric=Coverage
+[maven]: https://maven-badges.herokuapp.com/maven-central/com.github.wasiqb.coteafs/logger
