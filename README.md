@@ -1,5 +1,18 @@
 # coteafs-logger
 
+[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)][home]
+[![CircleCI](https://circleci.com/gh/WasiqB/coteafs-logger.svg?style=svg)][circleci]
+[![Test Coverage](https://sonarcloud.io/api/project_badges/measure?project=com.github.wasiqb.coteafs%3Alogger&metric=coverage)][coverage]
+[![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=com.github.wasiqb.coteafs%3Alogger&metric=alert_status)](https://sonarcloud.io/dashboard?id=com.github.wasiqb.coteafs%3Alogger)
+[![Maintainability](https://sonarcloud.io/api/project_badges/measure?project=com.github.wasiqb.coteafs%3Alogger&metric=sqale_rating)](https://sonarcloud.io/component_measures?id=com.github.wasiqb.coteafs%3Alogger&metric=Maintainability)
+[![Reliability](https://sonarcloud.io/api/project_badges/measure?project=com.github.wasiqb.coteafs%3Alogger&metric=reliability_rating)](https://sonarcloud.io/component_measures?id=com.github.wasiqb.coteafs%3Alogger&metric=Reliability)
+[![Security](https://sonarcloud.io/api/project_badges/measure?project=com.github.wasiqb.coteafs%3Alogger&metric=security_rating)](https://sonarcloud.io/component_measures?id=com.github.wasiqb.coteafs%3Alogger&metric=Security)
+[![Vulnerability](https://sonarcloud.io/api/project_badges/measure?project=com.github.wasiqb.coteafs%3Alogger&metric=vulnerabilities)](https://sonarcloud.io/component_measures?id=com.github.wasiqb.coteafs%3Alogger&metric=new_vulnerabilities)
+[![Duplicate Code](https://sonarcloud.io/api/project_badges/measure?project=com.github.wasiqb.coteafs%3Alogger&metric=duplicated_lines_density)](https://sonarcloud.io/component_measures?id=com.github.wasiqb.coteafs%3Alogger&metric=Duplications)
+[![Maven Central](https://img.shields.io/maven-central/v/com.github.wasiqb.coteafs/logger.svg)][maven]
+[![Github Releases](https://img.shields.io/github/downloads/WasiqB/coteafs-logger/total.svg)](https://github.com/WasiqB/coteafs-logger/releases)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
 ## :boom: What's this all about?
 
 coteafs-logger is a wrapper library on top of **log4j2**. This library was created to simplify the logging as there is no need to add two dependency of log4j2. Also the logger config is simplified by introducing Yaml style of configs.
@@ -153,6 +166,13 @@ You can use the following dependency into your `pom.xml` to use this library.
 * If you find any issue which is bottleneck for you, [search the issue tracker][] to see if it is already raised.
 * If not raised, then you can create a [new issue][] with required details as mentioned in the issue template.
 
+## :star: What you do if you like the project?
+* Spread the word with your network.
+* **Star** the project to make the project popular.
+* Stay updated with the project progress by **Watching** it.
+* Contribute to fix open issues, documentations or add new features. To know more, see our [contributing][] page.
+* I would be delighted if you can **Sponsor** this project and provide your support to open source development by clicking on the **Sponsor button** on the top of this repository.
+
 ## :heavy_check_mark: Contributors
 
 <div>
@@ -189,3 +209,8 @@ You can use the following dependency into your `pom.xml` to use this library.
 [site]: https://wasiqb.github.io
 [search the issue tracker]: https://github.com/WasiqB/coteafs-logger/issues?q=something
 [new issue]: https://github.com/WasiqB/coteafs-logger/issues/new
+[contributing]: .github/CONTRIBUTING.md
+[home]: https://github.com/wasiqb/coteafs-logger
+[circleci]: https://circleci.com/gh/WasiqB/coteafs-logger
+[coverage]: https://sonarcloud.io/component_measures?id=com.github.wasiqb.coteafs%3Alogger&metric=Coverage
+[maven]: https://maven-badges.herokuapp.com/maven-central/com.github.wasiqb.coteafs/logger
