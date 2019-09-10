@@ -24,18 +24,18 @@ import org.testng.annotations.Test;
  * @since 17-Jun-2017 6:14:59 PM
  */
 public class TestLogging {
-	/**
-	 * @author wasiq.bhamla
-	 * @since 17-Jun-2017 6:18:03 PM
-	 */
-	@Test
-	public void testLogs () {
-		final Logger log = LogManager.getLogger (TestLogging.class);
-		log.info ("Testing info...");
-		log.warn ("Testing warn...");
-		log.error ("Testing error...");
-		log.debug ("Testing debug...");
-		log.trace ("Testing trace...");
-		log.fatal ("Testing fatal...");
-	}
+    /**
+     * @author wasiq.bhamla
+     * @since 17-Jun-2017 6:18:03 PM
+     */
+    @Test
+    public void testLogs () {
+        final Logger log = LogManager.getLogger (TestLogging.class);
+        log.info ("Testing info...");
+        log.warn ("Testing warn...");
+        log.error ("Testing error...");
+        log.debug ("Testing debug...");
+        log.trace ("Testing trace...");
+        log.fatal ("Testing fatal...");
+    }
 }

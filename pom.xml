@@ -10,7 +10,7 @@
 	<parent>
 		<groupId>com.github.wasiqb.coteafs</groupId>
 		<artifactId>parent</artifactId>
-		<version>2.2.0</version>
+		<version>3.0.0</version>
 	</parent>
 
 	<scm>
@@ -30,8 +30,8 @@
 	</ciManagement>
 	
 	<properties>
-		<log4j.version>2.12.0</log4j.version>
-		<coteafs.config.version>1.8.0</coteafs.config.version>
+		<log4j.version>2.12.1</log4j.version>
+		<coteafs.config.version>2.0.0</coteafs.config.version>
 	</properties>
 
 	<dependencies>
@@ -39,22 +39,12 @@
 			<groupId>com.github.wasiqb.coteafs</groupId>
 			<artifactId>configs</artifactId>
 			<version>${coteafs.config.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>org.yaml</groupId>
-					<artifactId>snakeyaml</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
 			<version>${testng.version}</version>
 			<exclusions>
-				<exclusion>
-					<groupId>org.yaml</groupId>
-					<artifactId>snakeyaml</artifactId>
-				</exclusion>
 				<exclusion>
 					<groupId>com.google.guava</groupId>
 					<artifactId>guava</artifactId>
@@ -70,11 +60,6 @@
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-api</artifactId>
 			<version>${log4j.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.yaml</groupId>
-			<artifactId>snakeyaml</artifactId>
-			<version>${yaml-version}</version>
 		</dependency>
 	</dependencies>
 </project>
