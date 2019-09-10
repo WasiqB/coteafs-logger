@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2017, Wasiq Bhamla.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,51 +22,51 @@ import org.apache.logging.log4j.Level;
  * @since 27-Jun-2017 2:20:30 PM
  */
 public enum Status {
-	/**
-	 * Log all events.
-	 */
-	ALL (Level.ALL),
-	/**
-	 * Log debug events.
-	 */
-	DEBUG (Level.DEBUG),
-	/**
-	 * Log Error events.
-	 */
-	ERROR (Level.ERROR),
-	/**
-	 * Fatal Error.
-	 */
-	FATAL (Level.FATAL),
-	/**
-	 * Log info events.
-	 */
-	INFO (Level.INFO),
-	/**
-	 * Logging off.
-	 */
-	OFF (Level.OFF),
-	/**
-	 * Trace.
-	 */
-	TRACE (Level.TRACE),
-	/**
-	 * Warning.
-	 */
-	WARN (Level.WARN);
+    /**
+     * Log all events.
+     */
+    ALL (Level.ALL),
+    /**
+     * Log debug events.
+     */
+    DEBUG (Level.DEBUG),
+    /**
+     * Log Error events.
+     */
+    ERROR (Level.ERROR),
+    /**
+     * Fatal Error.
+     */
+    FATAL (Level.FATAL),
+    /**
+     * Log info events.
+     */
+    INFO (Level.INFO),
+    /**
+     * Logging off.
+     */
+    OFF (Level.OFF),
+    /**
+     * Trace.
+     */
+    TRACE (Level.TRACE),
+    /**
+     * Warning.
+     */
+    WARN (Level.WARN);
 
-	private final Level level;
+    private final Level level;
 
-	private Status (final Level level) {
-		this.level = level;
-	}
+    private Status (final Level level) {
+        this.level = level;
+    }
 
-	/**
-	 * @author wasiq.bhamla
-	 * @since 27-Jun-2017 2:26:25 PM
-	 * @return the status
-	 */
-	public Level getStatus () {
-		return this.level;
-	}
+    /**
+     * @author wasiq.bhamla
+     * @since 27-Jun-2017 2:26:25 PM
+     * @return the status
+     */
+    public Level getStatus () {
+        return this.level;
+    }
 }
