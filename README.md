@@ -58,7 +58,7 @@ Will output the logs as:
 ## :soccer: Logger config file
 
 The config file should be placed in `src/test/resources`.
-Following is the sample logger config which will create 1 rolling log files and also output the logs on console:
+Following is the sample logger config which will create 1 rolling log file and also output the logs on console:
 
 1. `new-log-main.log`
 
