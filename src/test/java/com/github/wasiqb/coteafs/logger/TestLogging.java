@@ -15,8 +15,6 @@
  */
 package com.github.wasiqb.coteafs.logger;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.testng.annotations.Test;
 
 /**
@@ -30,12 +28,12 @@ public class TestLogging {
      */
     @Test
     public void testLogs () {
-        final Logger log = LogManager.getLogger (TestLogging.class);
-        log.info ("Testing info...");
-        log.warn ("Testing warn...");
-        log.error ("Testing error...");
-        log.debug ("Testing debug...");
-        log.trace ("Testing trace...");
-        log.fatal ("Testing fatal...");
+        final Loggy log = Loggy.init ();
+        log.i ("Testing info...");
+        log.w ("Testing warn...");
+        log.e ("Testing error...");
+        log.d ("Testing debug...");
+        log.t ("Testing trace...");
+        log.f ("Testing fatal...");
     }
 }
