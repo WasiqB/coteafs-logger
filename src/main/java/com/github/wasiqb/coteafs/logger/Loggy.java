@@ -8,15 +8,13 @@ import org.apache.logging.log4j.Logger;
  * @since 12-Sep-2019
  */
 public final class Loggy {
-    private static final Loggy INSTANCE = new Loggy ();
-
     /**
      * @author Wasiq Bhamla
      * @since 12-Sep-2019
      * @return instance
      */
     public static Loggy init () {
-        return INSTANCE;
+        return new Loggy ();
     }
 
     private final Logger log;
