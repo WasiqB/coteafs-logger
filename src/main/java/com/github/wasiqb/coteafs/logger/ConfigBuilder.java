@@ -24,6 +24,7 @@ import static org.apache.logging.log4j.core.appender.ConsoleAppender.Target.valu
 
 import java.util.List;
 
+import com.github.wasiqb.coteafs.config.error.CoteafsConfigFileNotFoundError;
 import com.github.wasiqb.coteafs.config.loader.ConfigLoader;
 import com.github.wasiqb.coteafs.logger.config.ArchiveStrategy;
 import com.github.wasiqb.coteafs.logger.config.Logger;
@@ -83,13 +84,17 @@ class ConfigBuilder {
         return requireNonNull (value, format ("{0} is required.", field));
     }
 
-    private final LoggerSetting setting;
+    private LoggerSetting setting;
 
     ConfigBuilder () {
-        this.setting = ConfigLoader.settings ()
-            .withKey ("coteafs.logger.config")
-            .withDefault ("logger-config.yml")
-            .load (LoggerSetting.class);
+        try {
+            this.setting = ConfigLoader.settings ()
+                .withKey ("coteafs.logger.config")
+                .withDefault ("logger-config.yml")
+                .load (LoggerSetting.class);
+        } catch (@SuppressWarnings ("unused") final CoteafsConfigFileNotFoundError e) {
+            this.setting = null;
+        }
     }
 
     Configuration build (final String name, final ConfigurationBuilder<BuiltConfiguration> build) {

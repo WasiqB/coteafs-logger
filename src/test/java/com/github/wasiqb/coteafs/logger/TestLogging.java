@@ -36,4 +36,20 @@ public class TestLogging {
         log.t ("Testing trace...");
         log.f ("Testing fatal...");
     }
+
+    /**
+     * @author Wasiq Bhamla
+     * @since 13-Sep-2019
+     */
+    @Test
+    public void testLogsWithoutConfig () {
+        System.setProperty ("coteafs.logger.config", "test.yml");
+        final Loggy log = Loggy.init ();
+        log.i ("Testing info...");
+        log.w ("Testing warn...");
+        log.e ("Testing error...");
+        log.d ("Testing debug...");
+        log.t ("Testing trace...");
+        log.f ("Testing fatal...");
+    }
 }
