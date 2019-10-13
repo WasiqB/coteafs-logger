@@ -28,10 +28,8 @@ import org.apache.logging.log4j.core.config.plugins.Plugin;
  * @author wasiq.bhamla
  * @since 17-Jun-2017 4:48:40 PM
  */
-@Plugin (
-    name = "CustomConfigurationFactory",
-    category = ConfigurationFactory.CATEGORY)
-@Order (50)
+@Plugin (name = "ConfigFactory", category = ConfigurationFactory.CATEGORY)
+@Order (100)
 public class ConfigFactory extends ConfigurationFactory {
     /*
      * (non-Javadoc)
