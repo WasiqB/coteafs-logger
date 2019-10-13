@@ -86,6 +86,7 @@ class ConfigBuilder {
     private final LoggerSetting setting;
 
     ConfigBuilder () {
+        super ();
         this.setting = ConfigLoader.settings ()
             .withKey ("coteafs.logger.config")
             .withDefault ("logger-config.yml")
