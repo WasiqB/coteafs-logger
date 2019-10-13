@@ -15,6 +15,10 @@
  */
 package com.github.wasiqb.coteafs.logger;
 
+import static com.github.wasiqb.coteafs.logger.Loggy.init;
+
+import java.io.FileNotFoundException;
+
 import org.testng.annotations.Test;
 
 /**
@@ -28,9 +32,10 @@ public class TestLogging {
      */
     @Test
     public void testLogs () {
-        final Loggy log = Loggy.init ();
+        final Loggy log = init ();
         log.i ("Testing info...");
         log.w ("Testing warn...");
+        log.c (new FileNotFoundException ("File Not found"));
         log.e ("Testing error...");
         log.d ("Testing debug...");
         log.t ("Testing trace...");
@@ -43,11 +48,11 @@ public class TestLogging {
      */
     @Test
     public void testLogsWithoutConfig () {
-        System.setProperty ("coteafs.logger.config", "test.yml");
-        final Loggy log = Loggy.init ();
+        final Loggy log = init ();
         log.i ("Testing info...");
         log.w ("Testing warn...");
         log.e ("Testing error...");
+        log.c (new FileNotFoundException ("File Not found"));
         log.d ("Testing debug...");
         log.t ("Testing trace...");
         log.f ("Testing fatal...");

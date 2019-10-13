@@ -1,10 +1,12 @@
 package com.github.wasiqb.coteafs.logger.config;
 
+import com.github.wasiqb.coteafs.config.util.BasePojo;
+
 /**
  * @author Wasiq Bhamla
  * @since 10-Sep-2019
  */
-public class ArchiveStrategy {
+public class ArchiveStrategy extends BasePojo {
     private int     afterDays;
     private int     afterSize;
     private boolean onEveryRun;

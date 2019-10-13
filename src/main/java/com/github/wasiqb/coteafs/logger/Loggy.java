@@ -1,6 +1,8 @@
 package com.github.wasiqb.coteafs.logger;
 
-import org.apache.logging.log4j.LogManager;
+import static com.github.wasiqb.coteafs.error.util.ErrorUtil.handleError;
+import static org.apache.logging.log4j.LogManager.getLogger;
+
 import org.apache.logging.log4j.Logger;
 
 /**
@@ -22,7 +24,17 @@ public final class Loggy {
     private Loggy () {
         final Throwable caller = new Throwable ();
         final StackTraceElement callingStack = caller.getStackTrace () [2];
-        this.log = LogManager.getLogger (callingStack.getClassName ());
+        this.log = getLogger (callingStack.getClassName ());
+    }
+
+    /**
+     * @author Wasiq Bhamla
+     * @since 13-Oct-2019
+     * @param cause
+     */
+    public void c (final Throwable cause) {
+        this.log.catching (cause);
+        handleError (cause).forEach (this::e);
     }
 
     /**
