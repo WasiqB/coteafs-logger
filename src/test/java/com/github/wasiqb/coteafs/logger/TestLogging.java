@@ -16,8 +16,12 @@
 package com.github.wasiqb.coteafs.logger;
 
 import static com.github.wasiqb.coteafs.logger.Loggy.init;
+import static java.text.MessageFormat.format;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import org.testng.annotations.Test;
 
@@ -28,33 +32,41 @@ import org.testng.annotations.Test;
 public class TestLogging {
     /**
      * @author wasiq.bhamla
+     * @throws IOException
      * @since 17-Jun-2017 6:18:03 PM
      */
-    @Test
-    public void testLogs () {
+    @Test (expectedExceptions = IOException.class)
+    public void testLogs () throws IOException {
         final Loggy log = init ();
-        log.i ("Testing info...");
-        log.w ("Testing warn...");
-        log.c (new FileNotFoundException ("File Not found"));
-        log.e ("Testing error...");
-        log.d ("Testing debug...");
-        log.t ("Testing trace...");
-        log.f ("Testing fatal...");
-    }
-
-    /**
-     * @author Wasiq Bhamla
-     * @since 13-Sep-2019
-     */
-    @Test
-    public void testLogsWithoutConfig () {
-        final Loggy log = init ();
-        log.i ("Testing info...");
-        log.w ("Testing warn...");
-        log.e ("Testing error...");
-        log.c (new FileNotFoundException ("File Not found"));
-        log.d ("Testing debug...");
-        log.t ("Testing trace...");
-        log.f ("Testing fatal...");
+        final String attachByteMessage = "Testing {0} attach bytes...";
+        final String attachMessage = "Testing {0} attach...";
+        final String attach = "./attach-sample.txt";
+        final File attachFile = new File (attach);
+        try (FileInputStream in = new FileInputStream (attachFile)) {
+            final byte [] data = new byte [(int) attachFile.length ()];
+            in.read (data);
+            log.enter ("Entered method");
+            log.i ("Testing info...");
+            log.i (attachFile, format (attachMessage, "Info"));
+            log.i (data, format (attachByteMessage, "Info"));
+            log.w ("Testing warn...");
+            log.w (attachFile, format (attachMessage, "Warn"));
+            log.w (data, format (attachByteMessage, "Warn"));
+            log.c (new FileNotFoundException ("File Not found"));
+            log.e ("Testing error...");
+            log.e (attachFile, format (attachMessage, "Error"));
+            log.e (data, format (attachByteMessage, "Error"));
+            log.d ("Testing debug...");
+            log.d (attachFile, format (attachMessage, "Debug"));
+            log.d (data, format (attachByteMessage, "Debug"));
+            log.t ("Testing trace...");
+            log.t (attachFile, format (attachMessage, "Trace"));
+            log.t (data, format (attachByteMessage, "Trace"));
+            log.f ("Testing fatal...");
+            log.f (attachFile, format (attachMessage, "Fatal"));
+            log.f (data, format (attachByteMessage, "Fatal"));
+        }
+        log.exit ("Exit method");
+        throw log.th (new IOException ());
     }
 }

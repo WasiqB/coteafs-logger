@@ -12,5 +12,9 @@ public enum LoggerType {
     /**
      * File.
      */
-    FILE;
+    FILE,
+    /**
+     * Report Portal.
+     */
+    REPORT_PORTAL;
 }
