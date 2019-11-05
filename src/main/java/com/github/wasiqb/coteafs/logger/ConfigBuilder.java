@@ -21,7 +21,6 @@ import static com.github.wasiqb.coteafs.logger.config.Status.ALL;
 import static java.lang.System.getProperty;
 import static java.text.MessageFormat.format;
 import static java.util.Objects.requireNonNull;
-import static org.apache.commons.lang3.StringUtils.EMPTY;
 import static org.apache.logging.log4j.core.appender.ConsoleAppender.Target.valueOf;
 
 import java.util.List;
@@ -87,7 +86,7 @@ class ConfigBuilder {
     }
 
     private static String getAppenderPlugin (final LoggerType loggerType) {
-        String result = EMPTY;
+        String result;
         switch (loggerType) {
             case CONSOLE:
                 result = "Console";
