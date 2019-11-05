@@ -1,11 +1,12 @@
 ---
 log_dir: "/logs"
 loggers:
-- archive: null
-  file_name: null
-  level: "DEBUG"
+- level: "DEBUG"
   message_pattern: "[%d{HH:mm:ss.SSS}] [%-5level] - %msg : %throwable{short.message}(%logger{1}:%L)%n"
   name: "console-log"
-  path_pattern: null
   type: "CONSOLE"
+- level: "ALL"
+  message_pattern: "[%d{HH:mm:ss.SSS}] [%-5level] - %msg : %throwable{short.message}(%logger{1}:%L)%n"
+  name: "ReportPortalAppender"
+  type: "REPORT_PORTAL"
 status: "WARN"

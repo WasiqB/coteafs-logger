@@ -16,6 +16,7 @@
 package com.github.wasiqb.coteafs.logger;
 
 import static com.github.wasiqb.coteafs.logger.config.LoggerType.CONSOLE;
+import static com.github.wasiqb.coteafs.logger.config.LoggerType.FILE;
 import static com.github.wasiqb.coteafs.logger.config.Status.ALL;
 import static java.lang.System.getProperty;
 import static java.text.MessageFormat.format;
@@ -28,6 +29,7 @@ import com.github.wasiqb.coteafs.config.loader.ConfigLoader;
 import com.github.wasiqb.coteafs.logger.config.ArchiveStrategy;
 import com.github.wasiqb.coteafs.logger.config.Logger;
 import com.github.wasiqb.coteafs.logger.config.LoggerSetting;
+import com.github.wasiqb.coteafs.logger.config.LoggerType;
 
 import org.apache.logging.log4j.core.config.Configuration;
 import org.apache.logging.log4j.core.config.builder.api.AppenderComponentBuilder;
@@ -83,6 +85,23 @@ class ConfigBuilder {
         return requireNonNull (value, format ("{0} is required.", field));
     }
 
+    private static String getAppenderPlugin (final LoggerType loggerType) {
+        String result;
+        switch (loggerType) {
+            case CONSOLE:
+                result = "Console";
+                break;
+            case FILE:
+                result = "RollingFile";
+                break;
+            case REPORT_PORTAL:
+            default:
+                result = "ReportPortalLog4j2Appender";
+                break;
+        }
+        return result;
+    }
+
     private final LoggerSetting setting;
 
     ConfigBuilder () {
@@ -109,7 +128,7 @@ class ConfigBuilder {
     private void addAppenders (final ConfigurationBuilder<BuiltConfiguration> build) {
         final List<Logger> loggers = this.setting.getLoggers ();
         for (final Logger logger : loggers) {
-            final String plugin = logger.getType () == CONSOLE ? "Console" : "RollingFile";
+            final String plugin = getAppenderPlugin (logger.getType ());
             final AppenderComponentBuilder appenderCom = build.newAppender (check (logger.getName (), "Log Name"),
                 plugin);
             addAttributes (appenderCom, logger);
@@ -122,7 +141,7 @@ class ConfigBuilder {
     private void addAttributes (final AppenderComponentBuilder appenderCom, final Logger logSetting) {
         if (logSetting.getType () == CONSOLE) {
             appenderCom.addAttribute ("target", valueOf ("SYSTEM_OUT"));
-        } else {
+        } else if (logSetting.getType () == FILE) {
             final String dir = check (this.setting.getLogDir (), "Log Directory");
             appenderCom.addAttribute ("fileName",
                 format ("{0}/{1}/{2}.log", DIR, dir, check (logSetting.getFileName (), "File Name")));
