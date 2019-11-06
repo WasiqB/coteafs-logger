@@ -86,7 +86,7 @@ class ConfigBuilder {
     }
 
     private static String getAppenderPlugin (final LoggerType loggerType) {
-        String result;
+        final String result;
         switch (loggerType) {
             case CONSOLE:
                 result = "Console";
