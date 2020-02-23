@@ -28,8 +28,8 @@ import org.apache.logging.log4j.core.config.plugins.Plugin;
  * @author wasiq.bhamla
  * @since 17-Jun-2017 4:48:40 PM
  */
-@Plugin (name = "ConfigFactory", category = ConfigurationFactory.CATEGORY)
-@Order (100)
+@Plugin(name = "ConfigFactory", category = ConfigurationFactory.CATEGORY)
+@Order(100)
 public class ConfigFactory extends ConfigurationFactory {
     /*
      * (non-Javadoc)
@@ -39,8 +39,9 @@ public class ConfigFactory extends ConfigurationFactory {
      * org.apache.logging.log4j.core.config.ConfigurationSource)
      */
     @Override
-    public Configuration getConfiguration (final LoggerContext loggerContext, final ConfigurationSource source) {
-        return getConfiguration (loggerContext, source.toString (), null);
+    public Configuration getConfiguration(final LoggerContext loggerContext,
+        final ConfigurationSource source) {
+        return getConfiguration(loggerContext, source.toString(), null);
     }
 
     /*
@@ -50,10 +51,10 @@ public class ConfigFactory extends ConfigurationFactory {
      * org.apache.logging.log4j.core.LoggerContext, java.lang.String, java.net.URI)
      */
     @Override
-    public Configuration getConfiguration (final LoggerContext loggerContext, final String name,
+    public Configuration getConfiguration(final LoggerContext loggerContext, final String name,
         final URI configLocation) {
-        final ConfigBuilder builder = new ConfigBuilder ();
-        return builder.build (name, newConfigurationBuilder ());
+        final ConfigBuilder builder = new ConfigBuilder();
+        return builder.build(name, newConfigurationBuilder());
     }
 
     /*
@@ -62,7 +63,7 @@ public class ConfigFactory extends ConfigurationFactory {
      * org.apache.logging.log4j.core.config.ConfigurationFactory#getSupportedTypes()
      */
     @Override
-    protected String [] getSupportedTypes () {
-        return new String [] { "*" };
+    protected String[] getSupportedTypes() {
+        return new String[] { "*" };
     }
 }

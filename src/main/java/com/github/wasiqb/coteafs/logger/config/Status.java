@@ -25,48 +25,48 @@ public enum Status {
     /**
      * Log all events.
      */
-    ALL (Level.ALL),
+    ALL(Level.ALL),
     /**
      * Log debug events.
      */
-    DEBUG (Level.DEBUG),
+    DEBUG(Level.DEBUG),
     /**
      * Log Error events.
      */
-    ERROR (Level.ERROR),
+    ERROR(Level.ERROR),
     /**
      * Fatal Error.
      */
-    FATAL (Level.FATAL),
+    FATAL(Level.FATAL),
     /**
      * Log info events.
      */
-    INFO (Level.INFO),
+    INFO(Level.INFO),
     /**
      * Logging off.
      */
-    OFF (Level.OFF),
+    OFF(Level.OFF),
     /**
      * Trace.
      */
-    TRACE (Level.TRACE),
+    TRACE(Level.TRACE),
     /**
      * Warning.
      */
-    WARN (Level.WARN);
+    WARN(Level.WARN);
 
     private final Level level;
 
-    private Status (final Level level) {
+    private Status(final Level level) {
         this.level = level;
     }
 
     /**
+     * @return the status
      * @author wasiq.bhamla
      * @since 27-Jun-2017 2:26:25 PM
-     * @return the status
      */
-    public Level getStatus () {
+    public Level getStatus() {
         return this.level;
     }
 }

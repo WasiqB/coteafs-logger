@@ -30,7 +30,6 @@ import com.github.wasiqb.coteafs.logger.config.ArchiveStrategy;
 import com.github.wasiqb.coteafs.logger.config.Logger;
 import com.github.wasiqb.coteafs.logger.config.LoggerSetting;
 import com.github.wasiqb.coteafs.logger.config.LoggerType;
-
 import org.apache.logging.log4j.core.config.Configuration;
 import org.apache.logging.log4j.core.config.builder.api.AppenderComponentBuilder;
 import org.apache.logging.log4j.core.config.builder.api.AppenderRefComponentBuilder;
@@ -45,47 +44,47 @@ import org.apache.logging.log4j.core.config.builder.impl.BuiltConfiguration;
  * @since 26-Jun-2017 8:50:32 PM
  */
 class ConfigBuilder {
-    private static final String DIR = getProperty ("user.dir");
+    private static final String DIR = getProperty("user.dir");
 
-    private static void addComponent (final AppenderComponentBuilder component, final Logger logSetting,
-        final ConfigurationBuilder<BuiltConfiguration> build) {
-        if (logSetting.getType () == CONSOLE) {
+    private static void addComponent(final AppenderComponentBuilder component,
+        final Logger logSetting, final ConfigurationBuilder<BuiltConfiguration> build) {
+        if (logSetting.getType() == CONSOLE) {
             return;
         }
-        final ComponentBuilder<?> comp = build.newComponent ("Policies");
-        final ArchiveStrategy archive = logSetting.getArchive ();
+        final ComponentBuilder<?> comp = build.newComponent("Policies");
+        final ArchiveStrategy archive = logSetting.getArchive();
         if (archive != null) {
-            if (archive.getAfterDays () > 0) {
-                final ComponentBuilder<?> newComp = build.newComponent ("TimeBasedTriggeringPolicy");
-                newComp.addAttribute ("interval", archive.getAfterDays ());
-                newComp.addAttribute ("modulate", true);
-                comp.addComponent (newComp);
+            if (archive.getAfterDays() > 0) {
+                final ComponentBuilder<?> newComp = build.newComponent("TimeBasedTriggeringPolicy");
+                newComp.addAttribute("interval", archive.getAfterDays());
+                newComp.addAttribute("modulate", true);
+                comp.addComponent(newComp);
             }
-            if (archive.getAfterSize () > 0) {
-                final ComponentBuilder<?> newComp = build.newComponent ("SizeBasedTriggeringPolicy");
-                newComp.addAttribute ("size", format ("{0} MB", archive.getAfterSize ()));
-                comp.addComponent (newComp);
+            if (archive.getAfterSize() > 0) {
+                final ComponentBuilder<?> newComp = build.newComponent("SizeBasedTriggeringPolicy");
+                newComp.addAttribute("size", format("{0} MB", archive.getAfterSize()));
+                comp.addComponent(newComp);
             }
-            if (archive.isOnEveryRun ()) {
-                final ComponentBuilder<?> newComp = build.newComponent ("OnStartupTriggeringPolicy");
-                comp.addComponent (newComp);
+            if (archive.isOnEveryRun()) {
+                final ComponentBuilder<?> newComp = build.newComponent("OnStartupTriggeringPolicy");
+                comp.addComponent(newComp);
             }
         }
-        component.addComponent (comp);
+        component.addComponent(comp);
     }
 
-    private static void addLayout (final AppenderComponentBuilder appenderCom,
+    private static void addLayout(final AppenderComponentBuilder appenderCom,
         final ConfigurationBuilder<BuiltConfiguration> build, final Logger logSetting) {
-        final LayoutComponentBuilder layoutCom = build.newLayout ("PatternLayout");
-        layoutCom.addAttribute ("pattern", check (logSetting.getMessagePattern (), "Message Pattern"));
-        appenderCom.add (layoutCom);
+        final LayoutComponentBuilder layoutCom = build.newLayout("PatternLayout");
+        layoutCom.addAttribute("pattern", check(logSetting.getMessagePattern(), "Message Pattern"));
+        appenderCom.add(layoutCom);
     }
 
-    private static <T> T check (final T value, final String field) {
-        return requireNonNull (value, format ("{0} is required.", field));
+    private static <T> T check(final T value, final String field) {
+        return requireNonNull(value, format("{0} is required.", field));
     }
 
-    private static String getAppenderPlugin (final LoggerType loggerType) {
+    private static String getAppenderPlugin(final LoggerType loggerType) {
         final String result;
         switch (loggerType) {
             case CONSOLE:
@@ -104,63 +103,64 @@ class ConfigBuilder {
 
     private final LoggerSetting setting;
 
-    ConfigBuilder () {
-        super ();
-        this.setting = ConfigLoader.settings ()
-            .withKey ("coteafs.logger.config")
-            .withDefault ("logger-config.yml")
-            .load (LoggerSetting.class);
+    ConfigBuilder() {
+        super();
+        this.setting = ConfigLoader.settings()
+            .withKey("coteafs.logger.config")
+            .withDefault("logger-config.yml")
+            .load(LoggerSetting.class);
     }
 
-    Configuration build (final String name, final ConfigurationBuilder<BuiltConfiguration> build) {
+    Configuration build(final String name, final ConfigurationBuilder<BuiltConfiguration> build) {
         if (this.setting == null) {
             return null;
         }
-        build.setConfigurationName (name);
-        build.setStatusLevel (check (this.setting.getStatus ()
-            .getStatus (), "Log Level"));
-        build.setMonitorInterval ("30");
-        addAppenders (build);
-        addRootLogger (build);
-        return build.build ();
+        build.setConfigurationName(name);
+        build.setStatusLevel(check(this.setting.getStatus()
+            .getStatus(), "Log Level"));
+        build.setMonitorInterval("30");
+        addAppenders(build);
+        addRootLogger(build);
+        return build.build();
     }
 
-    private void addAppenders (final ConfigurationBuilder<BuiltConfiguration> build) {
-        final List<Logger> loggers = this.setting.getLoggers ();
+    private void addAppenders(final ConfigurationBuilder<BuiltConfiguration> build) {
+        final List<Logger> loggers = this.setting.getLoggers();
         for (final Logger logger : loggers) {
-            final String plugin = getAppenderPlugin (logger.getType ());
-            final AppenderComponentBuilder appenderCom = build.newAppender (check (logger.getName (), "Log Name"),
-                plugin);
-            addAttributes (appenderCom, logger);
-            addLayout (appenderCom, build, logger);
-            addComponent (appenderCom, logger, build);
-            build.add (appenderCom);
+            final String plugin = getAppenderPlugin(logger.getType());
+            final AppenderComponentBuilder appenderCom = build.newAppender(
+                check(logger.getName(), "Log Name"), plugin);
+            addAttributes(appenderCom, logger);
+            addLayout(appenderCom, build, logger);
+            addComponent(appenderCom, logger, build);
+            build.add(appenderCom);
         }
     }
 
-    private void addAttributes (final AppenderComponentBuilder appenderCom, final Logger logSetting) {
-        if (logSetting.getType () == CONSOLE) {
-            appenderCom.addAttribute ("target", valueOf ("SYSTEM_OUT"));
-        } else if (logSetting.getType () == FILE) {
-            final String dir = check (this.setting.getLogDir (), "Log Directory");
-            appenderCom.addAttribute ("fileName",
-                format ("{0}/{1}/{2}.log", DIR, dir, check (logSetting.getFileName (), "File Name")));
-            appenderCom.addAttribute ("filePattern",
-                format ("{0}/{1}/{2}.log", DIR, dir, check (logSetting.getPathPattern (), "Path Pattern")));
-            appenderCom.addAttribute ("append", false);
-            appenderCom.addAttribute ("immediateFlush", true);
+    private void addAttributes(final AppenderComponentBuilder appenderCom,
+        final Logger logSetting) {
+        if (logSetting.getType() == CONSOLE) {
+            appenderCom.addAttribute("target", valueOf("SYSTEM_OUT"));
+        } else if (logSetting.getType() == FILE) {
+            final String dir = check(this.setting.getLogDir(), "Log Directory");
+            appenderCom.addAttribute("fileName",
+                format("{0}/{1}/{2}.log", DIR, dir, check(logSetting.getFileName(), "File Name")));
+            appenderCom.addAttribute("filePattern", format("{0}/{1}/{2}.log", DIR, dir,
+                check(logSetting.getPathPattern(), "Path Pattern")));
+            appenderCom.addAttribute("append", false);
+            appenderCom.addAttribute("immediateFlush", true);
         }
     }
 
-    private void addRootLogger (final ConfigurationBuilder<BuiltConfiguration> build) {
-        final RootLoggerComponentBuilder root = build.newRootLogger (ALL.toString ());
-        final List<Logger> loggers = this.setting.getLoggers ();
+    private void addRootLogger(final ConfigurationBuilder<BuiltConfiguration> build) {
+        final RootLoggerComponentBuilder root = build.newRootLogger(ALL.toString());
+        final List<Logger> loggers = this.setting.getLoggers();
         for (final Logger logger : loggers) {
-            final AppenderRefComponentBuilder ref = build.newAppenderRef (logger.getName ());
-            ref.addAttribute ("level", check (logger.getLevel ()
-                .toString (), "Log Level"));
-            root.add (ref);
+            final AppenderRefComponentBuilder ref = build.newAppenderRef(logger.getName());
+            ref.addAttribute("level", check(logger.getLevel()
+                .toString(), "Log Level"));
+            root.add(ref);
         }
-        build.add (root);
+        build.add(root);
     }
 }

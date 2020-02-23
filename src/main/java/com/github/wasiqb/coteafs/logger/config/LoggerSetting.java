@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.github.wasiqb.coteafs.config.util.BasePojo;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,10 +22,10 @@ public class LoggerSetting extends BasePojo {
      * @author Wasiq Bhamla
      * @since 10-Sep-2019
      */
-    public LoggerSetting () {
+    public LoggerSetting() {
         this.logDir = "/logs";
         this.status = Status.WARN;
-        this.loggers = new ArrayList<> ();
-        this.loggers.add (new Logger ());
+        this.loggers = new ArrayList<>();
+        this.loggers.add(new Logger());
     }
 }
