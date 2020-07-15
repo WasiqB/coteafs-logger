@@ -4,12 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>logger</artifactId>
     <description>coteafs logging library.</description>
-    <version>2.3.0</version>
+    <version>2.4.0</version>
 
     <parent>
         <groupId>com.github.wasiqb.coteafs</groupId>
         <artifactId>parent</artifactId>
-        <version>3.1.1</version>
+        <version>3.2.0</version>
     </parent>
 
     <repositories>
@@ -24,11 +24,11 @@
     </repositories>
 
     <properties>
-        <log4j.version>2.13.0</log4j.version>
-        <coteafs.config.version>2.2.0</coteafs.config.version>
-        <coteafs.error.version>1.12.1</coteafs.error.version>
-        <rp.log.version>4.0.1</rp.log.version>
-        <rp.agent.version>4.2.3</rp.agent.version>
+        <log4j.version>2.13.3</log4j.version>
+        <coteafs.config.version>2.3.0</coteafs.config.version>
+        <coteafs.error.version>1.13.0</coteafs.error.version>
+        <rp.log.version>5.0.2</rp.log.version>
+        <rp.agent.version>5.0.4</rp.agent.version>
         <lombok.version>1.18.12</lombok.version>
     </properties>
 
