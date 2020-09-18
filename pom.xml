@@ -9,7 +9,7 @@
     <parent>
         <groupId>com.github.wasiqb.coteafs</groupId>
         <artifactId>parent</artifactId>
-        <version>3.2.0</version>
+        <version>3.3.5</version>
     </parent>
 
     <repositories>
@@ -26,9 +26,9 @@
     <properties>
         <log4j.version>2.13.3</log4j.version>
         <coteafs.config.version>2.3.0</coteafs.config.version>
-        <coteafs.error.version>1.13.0</coteafs.error.version>
-        <rp.log.version>5.0.2</rp.log.version>
-        <rp.agent.version>5.0.4</rp.agent.version>
+        <coteafs.error.version>1.15.0</coteafs.error.version>
+        <rp.log.version>5.0.3</rp.log.version>
+        <rp.agent.version>5.0.7</rp.agent.version>
         <lombok.version>1.18.12</lombok.version>
     </properties>
 
