@@ -3,17 +3,16 @@ package com.github.wasiqb.coteafs.logger.config;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.github.wasiqb.coteafs.config.util.BasePojo;
-import lombok.Getter;
-import lombok.Setter;
+import com.github.wasiqb.coteafs.datasource.annotation.DataFile;
+import lombok.Data;
 
 /**
  * @author Wasiq Bhamla
  * @since 10-Sep-2019
  */
-@Getter
-@Setter
-public class LoggerSetting extends BasePojo {
+@Data
+@DataFile
+public class LoggerConfig {
     private String       logDir;
     private List<Logger> loggers;
     private Status       status;
@@ -22,10 +21,10 @@ public class LoggerSetting extends BasePojo {
      * @author Wasiq Bhamla
      * @since 10-Sep-2019
      */
-    public LoggerSetting() {
+    public LoggerConfig () {
         this.logDir = "/logs";
         this.status = Status.WARN;
-        this.loggers = new ArrayList<>();
-        this.loggers.add(new Logger());
+        this.loggers = new ArrayList<> ();
+        this.loggers.add (new Logger ());
     }
 }

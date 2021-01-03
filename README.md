@@ -25,11 +25,15 @@
 
 ## :boom: What's this all about?
 
-coteafs-logger is a Java wrapper library build on top of **log4j2**. This library was created to simplify the logging as there is no need to add two dependency of log4j2. Also the logger can be configured using different config formats (Yaml, JSON, XML and properties)
+coteafs-logger is a Java wrapper library build on top of **log4j2**. This library was created to simplify the logging as
+there is no need to add two dependency of log4j2. Also, the logger can be configured using different config formats (
+Yaml, JSON, XML and properties)
 
 ## :golf: What this library offers?
 
-By default if you don't provide the logger config, then it will not log anything. But if the logger file is provided, it will log as per the config setting. To know more about the behavior of config file, check out it's repository [here][configs]
+By default, if you don't provide the logger config, then it will not log anything, but, if the logger file is provided, 
+it will log as per the config setting. To know more about the behavior of config file, check out it's
+repository [here][configs]
 
 ## Loggy Class
 
@@ -37,36 +41,45 @@ This library provides a utility class known as `Loggy` which simplifies the logg
 
 ```java
 final Loggy log = Loggy.init ();
+log.enter ("Code start");
 log.i ("Testing info...");
 log.w ("Testing warn...");
 log.e ("Testing error...");
 log.d ("Testing debug...");
+log.c (ex);
 log.t ("Testing trace...");
 log.f ("Testing fatal...");
+log.th (new Exception("Custom exception"));
+log.exit ("Code completed.");
 ```
 
 Will output the logs as:
 
 ```bash
-[21:05:58.271] [INFO ] - Testing info... (TestLogging:67)
-[21:05:58.273] [WARN ] - Testing warn... (TestLogging:87)
-[21:05:58.274] [ERROR] - Testing error... (TestLogging:47)
-[21:05:58.274] [DEBUG] - Testing debug... (TestLogging:37)
-[21:05:58.275] [FATAL] - Testing fatal... (TestLogging:57)
+[18:20:28.172] [TRACE] - Enter Entered method (TestLogging:126) 
+[18:20:28.175] [INFO ] - Testing info... (TestLogging:207) 
+[18:20:28.186] [WARN ] - Testing warn... (TestLogging:290) 
+[18:20:28.188] [ERROR] - Catching (TestLogging:45) File Not found
+[18:20:28.188] [ERROR] - Testing error... (TestLogging:115) 
+[18:20:28.189] [DEBUG] - Testing debug... (TestLogging:80) 
+[18:20:28.190] [TRACE] - Testing trace... (TestLogging:242) 
+[18:20:28.191] [FATAL] - Testing fatal... (TestLogging:172) 
+[18:20:28.192] [TRACE] - Exit: Exit method (TestLogging:137) 
+[18:20:28.193] [ERROR] - Throwing (TestLogging:255) Custom exception
 ```
 
 ## :soccer: Logger config file
 
-The config file should be placed in `src/test/resources`.
-Following is the sample logger config which will create 1 rolling log file and also output the logs on console:
+The config file should be placed in `src/test/resources` and file name must be `logger-config`. Following is the sample 
+logger config which will create 1 rolling log file and also output the logs to console:
 
 1. `new-log-main.log`
 
 The above generated files will be archived as per the configuration:
 
 - Every next day.
-- When log file size exceeds 5 mb.
-- On Every Automation Run
+- Log file size exceeds 5 mb.
+- On Every Automation Run.
 
 **`logger-config.yml`**
 
@@ -95,10 +108,11 @@ loggers:
 You can use the following dependency into your `pom.xml` to use this library.
 
 ```xml
+
 <dependency>
-  <groupId>com.github.wasiqb.coteafs</groupId>
-  <artifactId>logger</artifactId>
-  <version>2.4.0</version>
+    <groupId>com.github.wasiqb.coteafs</groupId>
+    <artifactId>logger</artifactId>
+    <version>2.5.0</version>
 </dependency>
 ```
 
@@ -115,7 +129,8 @@ You can use the following dependency into your `pom.xml` to use this library.
 * **Star** the project to make the project popular.
 * Stay updated with the project progress by **Watching** it.
 * Contribute to fix open issues, documentations or add new features. To know more, see our [contributing][] page.
-* I would be delighted if you can **Sponsor** this project and provide your support to open source development by clicking on the **Sponsor button** on the top of this repository.
+* I would be delighted if you can **Sponsor** this project and provide your support to open source development by
+  clicking on the **Sponsor button** on the top of this repository.
 
 ## :heavy_check_mark: Contributors
 
