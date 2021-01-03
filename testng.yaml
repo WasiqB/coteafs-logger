@@ -1,0 +1,5 @@
+name: Coteafs-Logger Suite
+tests:
+  - name: Coteafs-Logger Test
+    classes:
+      - com.github.wasiqb.coteafs.logger.TestLogging
